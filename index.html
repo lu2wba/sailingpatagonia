@@ -16,8 +16,8 @@
     --ocean:      #1a4b8c;
     --sky:        #2e7dc6;
     --foam:       #c8dff5;
-    --white:      #f5f0e8;
-    --cream:      #ede8dd;
+    --white:      #ddeef8;
+    --cream:      #cfe4f2;
     --gold:       #c9a84c;
     --gold-light: #e8c96e;
     --rope:       #8b6f47;
@@ -25,628 +25,128 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
+  body { background: var(--white); color: var(--navy); font-family: 'EB Garamond', Georgia, serif; font-size: 18px; line-height: 1.7; overflow-x: hidden; }
 
-  body {
-    background: var(--white);
-    color: var(--navy);
-    font-family: 'EB Garamond', Georgia, serif;
-    font-size: 18px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
+  .rope-line { border: none; height: 6px; background: repeating-linear-gradient(90deg, var(--rope) 0px, var(--rope) 8px, var(--gold) 8px, var(--gold) 12px, var(--rope) 12px, var(--rope) 20px); opacity: 0.6; }
 
-  /* ── ROPE BORDER UTILITY ── */
-  .rope-line {
-    border: none;
-    height: 6px;
-    background: repeating-linear-gradient(
-      90deg,
-      var(--rope) 0px, var(--rope) 8px,
-      var(--gold) 8px, var(--gold) 12px,
-      var(--rope) 12px, var(--rope) 20px
-    );
-    opacity: 0.6;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: var(--navy);
-    border-bottom: 3px solid var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2.5rem;
-    height: 62px;
-  }
-
-  .nav-brand {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    color: var(--white);
-    letter-spacing: 0.12em;
-    text-decoration: none;
-  }
-
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--navy); border-bottom: 3px solid var(--gold); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 62px; }
+  .nav-brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--white); letter-spacing: 0.12em; text-decoration: none; }
   .nav-brand span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-family: 'EB Garamond', serif; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--foam); text-decoration: none; padding-bottom: 2px; border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .nav-links a:hover { color: var(--gold-light); border-color: var(--gold-light); }
 
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
+  .hero { height: 100vh; min-height: 600px; background: var(--navy); position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .hero-photo { position: absolute; inset: 0; background-image: url('fragata1.jpg'); background-size: contain; background-position: center center; background-repeat: no-repeat; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,22,40,0.55) 0%, rgba(10,22,40,0.45) 50%, rgba(10,22,40,0.75) 100%); }
+  .hero-waves { position: absolute; inset: 0; opacity: 0.06; background: repeating-linear-gradient(-8deg, transparent, transparent 28px, var(--sky) 28px, var(--sky) 30px); animation: drift 18s linear infinite; }
+  @keyframes drift { from { background-position: 0 0; } to { background-position: 400px 200px; } }
 
-  .nav-links a {
-    font-family: 'EB Garamond', serif;
-    font-size: 0.95rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--foam);
-    text-decoration: none;
-    padding-bottom: 2px;
-    border-bottom: 1px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
-  }
+  .compass-rose { position: absolute; right: 8%; top: 50%; transform: translateY(-50%); width: 320px; height: 320px; opacity: 0.18; animation: spin-slow 60s linear infinite; }
+  @keyframes spin-slow { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(360deg); } }
 
-  .nav-links a:hover {
-    color: var(--gold-light);
-    border-color: var(--gold-light);
-  }
+  .hero-content { position: relative; z-index: 2; text-align: center; padding: 2rem; animation: fadeUp 1s ease both; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-eyebrow { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.3em; font-size: 0.85rem; color: var(--gold); margin-bottom: 1rem; text-transform: uppercase; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 7rem); font-weight: 900; color: var(--white); line-height: 1.05; margin-bottom: 0.3em; }
+  .hero h1 em { font-style: italic; color: var(--sky); }
+  .hero-sub { font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--foam); margin-bottom: 2.5rem; letter-spacing: 0.04em; }
+  .hero-coords { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.2em; font-size: 0.8rem; color: var(--gold); opacity: 0.8; }
+  .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: var(--foam); opacity: 0.5; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; animation: bob 2s ease-in-out infinite; }
+  .scroll-hint::after { content: ''; display: block; width: 1px; height: 40px; background: var(--foam); margin: 8px auto 0; }
+  @keyframes bob { 0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); } 50% { opacity: 0.7; transform: translateX(-50%) translateY(6px); } }
 
-  /* ── HERO ── */
-  .hero {
-    height: 100vh;
-    min-height: 600px;
-    background: var(--navy);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
+  section { padding: 90px 0; }
+  .section-inner { max-width: 1060px; margin: 0 auto; padding: 0 2.5rem; }
+  .section-header { text-align: center; margin-bottom: 3.5rem; }
+  .section-tag { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.3em; font-size: 0.75rem; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 0.6rem; }
+  .section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: var(--navy); line-height: 1.15; }
+  .section-header h2 em { font-style: italic; color: var(--ocean); }
+  .section-lead { font-style: italic; color: #3a4a5e; max-width: 560px; margin: 1rem auto 0; font-size: 1.05rem; }
+  .divider { width: 60px; height: 3px; background: var(--gold); margin: 1.2rem auto 0; }
 
-  /* Photo background */
-  .hero-photo {
-    position: absolute;
-    inset: 0;
-    background-image: url('fragata1.jpg');
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  /* Dark navy overlay */
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(10,22,40,0.55) 0%,
-      rgba(10,22,40,0.45) 50%,
-      rgba(10,22,40,0.75) 100%
-    );
-  }
-
-  /* Subtle wave animation on top of photo */
-  .hero-waves {
-    position: absolute;
-    inset: 0;
-    opacity: 0.06;
-    background:
-      repeating-linear-gradient(
-        -8deg,
-        transparent,
-        transparent 28px,
-        var(--sky) 28px,
-        var(--sky) 30px
-      );
-    animation: drift 18s linear infinite;
-  }
-
-  @keyframes drift {
-    from { background-position: 0 0; }
-    to   { background-position: 400px 200px; }
-  }
-
-  /* Compass rose watermark */
-  .compass-rose {
-    position: absolute;
-    right: 8%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 320px;
-    height: 320px;
-    opacity: 0.07;
-    animation: spin-slow 60s linear infinite;
-  }
-
-  @keyframes spin-slow {
-    from { transform: translateY(-50%) rotate(0deg); }
-    to   { transform: translateY(-50%) rotate(360deg); }
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 2rem;
-    animation: fadeUp 1s ease both;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-eyebrow {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.3em;
-    font-size: 0.85rem;
-    color: var(--gold);
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-  }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 8vw, 7rem);
-    font-weight: 900;
-    color: var(--white);
-    line-height: 1.05;
-    margin-bottom: 0.3em;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--sky);
-  }
-
-  .hero-sub {
-    font-family: 'EB Garamond', serif;
-    font-style: italic;
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    color: var(--foam);
-    margin-bottom: 2.5rem;
-    letter-spacing: 0.04em;
-  }
-
-  .hero-coords {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.2em;
-    font-size: 0.8rem;
-    color: var(--gold);
-    opacity: 0.8;
-  }
-
-  .scroll-hint {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--foam);
-    opacity: 0.5;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    animation: bob 2s ease-in-out infinite;
-  }
-
-  .scroll-hint::after {
-    content: '';
-    display: block;
-    width: 1px;
-    height: 40px;
-    background: var(--foam);
-    margin: 8px auto 0;
-  }
-
-  @keyframes bob {
-    0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
-    50%       { opacity: 0.7; transform: translateX(-50%) translateY(6px); }
-  }
-
-  /* ── SECTIONS COMMON ── */
-  section {
-    padding: 90px 0;
-  }
-
-  .section-inner {
-    max-width: 1060px;
-    margin: 0 auto;
-    padding: 0 2.5rem;
-  }
-
-  .section-header {
-    text-align: center;
-    margin-bottom: 3.5rem;
-  }
-
-  .section-tag {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.3em;
-    font-size: 0.75rem;
-    color: var(--gold);
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 0.6rem;
-  }
-
-  .section-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 700;
-    color: var(--navy);
-    line-height: 1.15;
-  }
-
-  .section-header h2 em {
-    font-style: italic;
-    color: var(--ocean);
-  }
-
-  .section-lead {
-    font-style: italic;
-    color: #4a5568;
-    max-width: 560px;
-    margin: 1rem auto 0;
-    font-size: 1.05rem;
-  }
-
-  .divider {
-    width: 60px;
-    height: 3px;
-    background: var(--gold);
-    margin: 1.2rem auto 0;
-  }
-
-  /* ── BARCOS ── */
   #barcos { background: var(--white); }
-
-  .boats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
-  }
-
-  .boat-card {
-    background: var(--cream);
-    border: 1px solid #d4c9b0;
-    border-top: 4px solid var(--ocean);
-    padding: 1.8rem 1.6rem;
-    position: relative;
-    transition: transform 0.25s, box-shadow 0.25s;
-  }
-
-  .boat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(10,22,40,0.12);
-  }
-
-  .boat-flag {
-    font-size: 2.2rem;
-    margin-bottom: 0.8rem;
-    display: block;
-  }
-
-  .boat-class {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.15em;
-    font-size: 1.4rem;
-    color: var(--navy);
-    margin-bottom: 0.2rem;
-  }
-
-  .boat-name {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1rem;
-    color: var(--ocean);
-    margin-bottom: 1rem;
-  }
-
-  .boat-specs {
-    list-style: none;
-    font-size: 0.88rem;
-    color: #4a5568;
-    line-height: 2;
-  }
-
+  .boats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
+  .boat-card { background: #eaf3fb; border: 1px solid #b8d4e8; border-top: 4px solid var(--ocean); padding: 1.8rem 1.6rem; position: relative; transition: transform 0.25s, box-shadow 0.25s; }
+  .boat-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(10,22,40,0.12); }
+  .boat-flag { font-size: 2.2rem; margin-bottom: 0.8rem; display: block; }
+  .boat-class { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.15em; font-size: 1.4rem; color: var(--navy); margin-bottom: 0.2rem; }
+  .boat-name { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--ocean); margin-bottom: 1rem; }
+  .boat-specs { list-style: none; font-size: 0.88rem; color: #3a4a5e; line-height: 2; }
   .boat-specs li { display: flex; justify-content: space-between; }
+  .boat-specs .label { font-weight: 500; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em; color: #5a6a7e; }
+  .boat-specs .value { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; color: var(--navy); font-size: 0.95rem; }
+  .py-badge { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--navy); color: var(--gold); font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.1em; font-size: 0.85rem; padding: 0.2rem 0.6rem; }
 
-  .boat-specs .label {
-    font-weight: 500;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    color: #7a8090;
-  }
-
-  .boat-specs .value {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.05em;
-    color: var(--navy);
-    font-size: 0.95rem;
-  }
-
-  .py-badge {
-    position: absolute;
-    top: 1.2rem; right: 1.2rem;
-    background: var(--navy);
-    color: var(--gold);
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.1em;
-    font-size: 0.85rem;
-    padding: 0.2rem 0.6rem;
-  }
-
-  /* ── CLUB ── */
   #club { background: var(--navy); color: var(--foam); }
-
   #club .section-header h2 { color: var(--white); }
-  #club .section-lead      { color: var(--foam); }
-  #club .divider           { background: var(--gold); }
+  #club .section-lead { color: var(--foam); }
+  #club .divider { background: var(--gold); }
+  .club-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .club-text h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold-light); margin-bottom: 1rem; }
+  .club-text p { color: var(--foam); opacity: 0.85; margin-bottom: 1rem; font-size: 0.98rem; }
+  .club-roles { margin-top: 1.5rem; border-top: 1px solid rgba(200,223,245,0.2); padding-top: 1.2rem; }
+  .club-role-item { display: flex; align-items: center; gap: 0.8rem; padding: 0.6rem 0; border-bottom: 1px solid rgba(200,223,245,0.1); font-size: 0.92rem; }
+  .club-role-item .icon { font-size: 1.3rem; width: 2rem; text-align: center; }
+  .club-role-item .role-label { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.1em; color: var(--gold); font-size: 0.85rem; min-width: 130px; }
+  .club-info-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.3); padding: 2rem; }
+  .info-row { display: flex; flex-direction: column; padding: 0.9rem 0; border-bottom: 1px solid rgba(200,223,245,0.1); }
+  .info-row:last-child { border-bottom: none; }
+  .info-label { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.15em; font-size: 0.72rem; color: var(--gold); margin-bottom: 0.2rem; }
+  .info-value { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); }
 
-  .club-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
+  #regatas { background: var(--cream); }
+  .regatas-table-wrap { overflow-x: auto; border: 1px solid #b8d4e8; margin-bottom: 2.5rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  thead { background: var(--navy); color: var(--gold); font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.15em; font-size: 0.8rem; }
+  thead th { padding: 0.9rem 1.2rem; text-align: left; white-space: nowrap; }
+  tbody tr { border-bottom: 1px solid #b8d4e8; transition: background 0.15s; }
+  tbody tr:hover { background: rgba(30,53,96,0.06); }
+  tbody td { padding: 0.85rem 1.2rem; color: var(--navy); vertical-align: middle; }
+  .result-badge { display: inline-block; padding: 0.15rem 0.6rem; font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.08em; font-size: 0.82rem; border-radius: 2px; }
+  .result-1  { background: var(--gold);  color: var(--navy); }
+  .result-2  { background: #adb5bd; color: var(--navy); }
+  .result-3  { background: var(--rope); color: var(--white); }
+  .result-ok { background: var(--ocean); color: var(--white); }
+  .placeholder-note { text-align: center; font-style: italic; color: #5a6a7e; padding: 2.5rem; font-size: 0.95rem; }
+
+  .py-section-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 1rem; }
+  .py-section-title em { font-style: italic; color: var(--ocean); }
+  .py-note { font-style: italic; font-size: 0.85rem; color: #5a6a7e; margin-top: 0.8rem; }
+  .dot-fast { color: #1a4b8c; }
+  .dot-slow { color: #8b6f47; }
+
+  #galeria { background: var(--white); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .gallery-item { background: #eaf3fb; border: 1px solid #b8d4e8; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; color: #5a6a7e; font-size: 0.82rem; font-style: italic; position: relative; overflow: hidden; transition: transform 0.2s; cursor: pointer; }
+  .gallery-item:hover { transform: scale(1.02); }
+  .gallery-item.featured { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; min-height: 300px; }
+  .gallery-icon { font-size: 2.5rem; opacity: 0.35; }
+
+  footer { background: var(--navy); color: var(--foam); text-align: center; padding: 3rem 2rem; border-top: 3px solid var(--gold); }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; color: var(--white); margin-bottom: 0.5rem; }
+  .footer-callsign { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.25em; color: var(--gold); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .footer-links a { color: var(--foam); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.08em; opacity: 0.7; transition: opacity 0.2s, color 0.2s; }
+  .footer-links a:hover { opacity: 1; color: var(--gold-light); }
+  .footer-copy { font-size: 0.78rem; opacity: 0.4; letter-spacing: 0.05em; }
 
   @media (max-width: 720px) {
     .club-layout { grid-template-columns: 1fr; gap: 2rem; }
     nav { padding: 0 1rem; }
     .nav-links { gap: 1rem; }
-  }
-
-  .club-text h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    color: var(--gold-light);
-    margin-bottom: 1rem;
-  }
-
-  .club-text p {
-    color: var(--foam);
-    opacity: 0.85;
-    margin-bottom: 1rem;
-    font-size: 0.98rem;
-  }
-
-  .club-roles {
-    margin-top: 1.5rem;
-    border-top: 1px solid rgba(200,223,245,0.2);
-    padding-top: 1.2rem;
-  }
-
-  .club-role-item {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    padding: 0.6rem 0;
-    border-bottom: 1px solid rgba(200,223,245,0.1);
-    font-size: 0.92rem;
-  }
-
-  .club-role-item .icon { font-size: 1.3rem; width: 2rem; text-align: center; }
-
-  .club-role-item .role-label {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.1em;
-    color: var(--gold);
-    font-size: 0.85rem;
-    min-width: 130px;
-  }
-
-  .club-info-box {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(201,168,76,0.3);
-    padding: 2rem;
-  }
-
-  .info-row {
-    display: flex;
-    flex-direction: column;
-    padding: 0.9rem 0;
-    border-bottom: 1px solid rgba(200,223,245,0.1);
-  }
-
-  .info-row:last-child { border-bottom: none; }
-
-  .info-label {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.15em;
-    font-size: 0.72rem;
-    color: var(--gold);
-    margin-bottom: 0.2rem;
-  }
-
-  .info-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: var(--white);
-  }
-
-  /* ── REGATAS ── */
-  #regatas { background: var(--cream); }
-
-  .regatas-table-wrap {
-    overflow-x: auto;
-    border: 1px solid #d4c9b0;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.92rem;
-  }
-
-  thead {
-    background: var(--navy);
-    color: var(--gold);
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.15em;
-    font-size: 0.8rem;
-  }
-
-  thead th {
-    padding: 0.9rem 1.2rem;
-    text-align: left;
-    white-space: nowrap;
-  }
-
-  tbody tr {
-    border-bottom: 1px solid #d4c9b0;
-    transition: background 0.15s;
-  }
-
-  tbody tr:hover { background: rgba(30,53,96,0.06); }
-
-  tbody td {
-    padding: 0.85rem 1.2rem;
-    color: var(--navy);
-    vertical-align: middle;
-  }
-
-  .result-badge {
-    display: inline-block;
-    padding: 0.15rem 0.6rem;
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.08em;
-    font-size: 0.82rem;
-    border-radius: 2px;
-  }
-
-  .result-1  { background: var(--gold);  color: var(--navy); }
-  .result-2  { background: #adb5bd;     color: var(--navy); }
-  .result-3  { background: var(--rope); color: var(--white); }
-  .result-ok { background: var(--ocean);color: var(--white); }
-
-  .placeholder-note {
-    text-align: center;
-    font-style: italic;
-    color: #7a8090;
-    padding: 2.5rem;
-    font-size: 0.95rem;
-  }
-
-  /* ── GALERÍA ── */
-  #galeria { background: var(--white); }
-
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
-    gap: 1rem;
-  }
-
-  @media (max-width: 900px) {
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-    .boats-grid   { grid-template-columns: 1fr 1fr; }
+    .boats-grid { grid-template-columns: 1fr 1fr; }
   }
-
   @media (max-width: 560px) {
     .gallery-grid { grid-template-columns: 1fr; }
-    .boats-grid   { grid-template-columns: 1fr; }
-  }
-
-  .gallery-item {
-    background: var(--cream);
-    border: 1px solid #d4c9b0;
-    aspect-ratio: 4/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 0.5rem;
-    color: #9aa0aa;
-    font-size: 0.82rem;
-    font-style: italic;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s;
-    cursor: pointer;
-  }
-
-  .gallery-item:hover { transform: scale(1.02); }
-
-  .gallery-item.featured {
-    grid-column: span 2;
-    grid-row: span 2;
-    aspect-ratio: auto;
-    min-height: 300px;
-  }
-
-  .gallery-icon { font-size: 2.5rem; opacity: 0.35; }
-
-  .gallery-item img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--navy);
-    color: var(--foam);
-    text-align: center;
-    padding: 3rem 2rem;
-    border-top: 3px solid var(--gold);
-  }
-
-  .footer-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-style: italic;
-    color: var(--white);
-    margin-bottom: 0.5rem;
-  }
-
-  .footer-callsign {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0.25em;
-    color: var(--gold);
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
-  }
-
-  .footer-links a {
-    color: var(--foam);
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    opacity: 0.7;
-    transition: opacity 0.2s, color 0.2s;
-  }
-
-  .footer-links a:hover { opacity: 1; color: var(--gold-light); }
-
-  .footer-copy {
-    font-size: 0.78rem;
-    opacity: 0.4;
-    letter-spacing: 0.05em;
+    .boats-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-brand">⚓ <span>Sailing</span> Patagonia</a>
   <ul class="nav-links">
@@ -657,102 +157,53 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-photo"></div>
   <div class="hero-overlay"></div>
   <div class="hero-waves"></div>
-
-  <!-- Compass Rose SVG -->
   <svg class="compass-rose" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="100" cy="100" r="90" stroke="white" stroke-width="1.5"/>
     <circle cx="100" cy="100" r="70" stroke="white" stroke-width="0.8"/>
     <circle cx="100" cy="100" r="10" fill="white" opacity="0.5"/>
-    <!-- N S E W points -->
     <polygon points="100,10 107,90 100,100 93,90" fill="white"/>
     <polygon points="100,190 107,110 100,100 93,110" fill="white" opacity="0.5"/>
     <polygon points="10,100 90,93 100,100 90,107" fill="white" opacity="0.5"/>
     <polygon points="190,100 110,93 100,100 110,107" fill="white"/>
-    <!-- Intercardinal -->
     <polygon points="136,20 118,82 110,78" fill="white" opacity="0.3"/>
     <polygon points="164,136 102,118 106,110" fill="white" opacity="0.3"/>
     <polygon points="36,164 82,102 78,110" fill="white" opacity="0.3"/>
     <polygon points="20,36 82,98 90,90" fill="white" opacity="0.3"/>
-    <!-- Labels -->
-    <text x="95" y="8" fill="white" font-size="12" font-family="serif" font-weight="bold">N</text>
-    <text x="95" y="198" fill="white" font-size="12" font-family="serif" opacity="0.6">S</text>
-    <text x="2" y="104" fill="white" font-size="12" font-family="serif" opacity="0.6">O</text>
+    <text x="95" y="8"    fill="white" font-size="12" font-family="serif" font-weight="bold">N</text>
+    <text x="95" y="198"  fill="white" font-size="12" font-family="serif" opacity="0.6">S</text>
+    <text x="2"  y="104"  fill="white" font-size="12" font-family="serif" opacity="0.6">O</text>
     <text x="188" y="104" fill="white" font-size="12" font-family="serif">E</text>
   </svg>
-
   <div class="hero-content">
     <p class="hero-eyebrow">⛵ &nbsp; Comodoro Rivadavia · Patagonia · Argentina</p>
     <h1>Sailing<br><em>Patagonia</em></h1>
     <p class="hero-sub">Viento del sur, agua fría y ganas de navegar.</p>
     <p class="hero-coords">45°51'S &nbsp;·&nbsp; 67°29'W &nbsp;·&nbsp; Golfo San Jorge</p>
   </div>
-
   <div class="scroll-hint">Scroll</div>
 </section>
 
 <hr class="rope-line">
 
-<!-- BARCOS -->
 <section id="barcos">
   <div class="section-inner">
     <div class="section-header">
       <span class="section-tag">⛵ Flota</span>
-      <h2>Mis <em>barcos</em></h2>
+      <h2>La ROD <em>Fleet</em></h2>
       <div class="divider"></div>
       <p class="section-lead">Cada clase tiene su carácter. Cada salida, su historia.</p>
     </div>
-
     <div class="boats-grid">
-
-      <div class="boat-card">
-        <span class="py-badge">PY 973</span>
-        <span class="boat-flag">⛵</span>
-        <div class="boat-class">470</div>
-        <div class="boat-name">Clase 470 — dos tripulantes</div>
-        <ul class="boat-specs">
-          <li><span class="label">Eslora</span><span class="value">4.70 m</span></li>
-          <li><span class="label">Tripulación</span><span class="value">2 + spinnaker</span></li>
-          <li><span class="label">Clase RYA</span><span class="value">ISAF 470</span></li>
-          <li><span class="label">PY RYA 2024</span><span class="value">973</span></li>
-        </ul>
-      </div>
-
-      <div class="boat-card">
-        <span class="py-badge">PY 1102</span>
-        <span class="boat-flag">🌊</span>
-        <div class="boat-class">Laser Standard</div>
-        <div class="boat-name">ILCA 7 — monotipo olímpico</div>
-        <ul class="boat-specs">
-          <li><span class="label">Eslora</span><span class="value">4.23 m</span></li>
-          <li><span class="label">Tripulación</span><span class="value">1</span></li>
-          <li><span class="label">Clase</span><span class="value">ILCA 7</span></li>
-          <li><span class="label">PY RYA 2024</span><span class="value">1102</span></li>
-        </ul>
-      </div>
-
-      <div class="boat-card">
-        <span class="py-badge">PY 1147</span>
-        <span class="boat-flag">🏅</span>
-        <div class="boat-class">Europe</div>
-        <div class="boat-name">Clase Europe — olímpico femenino</div>
-        <ul class="boat-specs">
-          <li><span class="label">Eslora</span><span class="value">3.35 m</span></li>
-          <li><span class="label">Tripulación</span><span class="value">1</span></li>
-          <li><span class="label">Clase</span><span class="value">Europe</span></li>
-          <li><span class="label">PY RYA 2024</span><span class="value">1147</span></li>
-        </ul>
-      </div>
 
       <div class="boat-card">
         <span class="py-badge">PY 1154</span>
         <span class="boat-flag">💨</span>
         <div class="boat-class">Laser Radial</div>
-        <div class="boat-name">ILCA 6 — viento fuerte</div>
+        <div class="boat-name">"La Pinta" — ILCA 6</div>
         <ul class="boat-specs">
           <li><span class="label">Eslora</span><span class="value">4.23 m</span></li>
           <li><span class="label">Tripulación</span><span class="value">1</span></li>
@@ -762,15 +213,53 @@
       </div>
 
       <div class="boat-card">
-        <span class="py-badge">PY 1213</span>
-        <span class="boat-flag">🌬️</span>
-        <div class="boat-class">Laser 4.7</div>
-        <div class="boat-name">ILCA 4 — iniciación</div>
+        <span class="py-badge">PY 1102</span>
+        <span class="boat-flag">🌊</span>
+        <div class="boat-class">Laser Standard</div>
+        <div class="boat-name">"La Niña" — ILCA 7</div>
         <ul class="boat-specs">
           <li><span class="label">Eslora</span><span class="value">4.23 m</span></li>
           <li><span class="label">Tripulación</span><span class="value">1</span></li>
-          <li><span class="label">Clase</span><span class="value">ILCA 4</span></li>
-          <li><span class="label">PY RYA 2024</span><span class="value">1213</span></li>
+          <li><span class="label">Clase</span><span class="value">ILCA 7</span></li>
+          <li><span class="label">PY RYA 2024</span><span class="value">1102</span></li>
+        </ul>
+      </div>
+
+      <div class="boat-card">
+        <span class="py-badge">Crucero</span>
+        <span class="boat-flag">⚓</span>
+        <div class="boat-class">Crucero</div>
+        <div class="boat-name">"Fortinera"</div>
+        <ul class="boat-specs">
+          <li><span class="label">Tipo</span><span class="value">Crucero oceánico</span></li>
+          <li><span class="label">Tripulación</span><span class="value">varios</span></li>
+          <li><span class="label">Uso</span><span class="value">Offshore / travesías</span></li>
+        </ul>
+      </div>
+
+      <div class="boat-card">
+        <span class="py-badge">PY 1147</span>
+        <span class="boat-flag">🏅</span>
+        <div class="boat-class">Europe</div>
+        <div class="boat-name">"Totatola" — Clase Europe</div>
+        <ul class="boat-specs">
+          <li><span class="label">Eslora</span><span class="value">3.35 m</span></li>
+          <li><span class="label">Tripulación</span><span class="value">1</span></li>
+          <li><span class="label">Clase</span><span class="value">Europe</span></li>
+          <li><span class="label">PY RYA 2024</span><span class="value">1147</span></li>
+        </ul>
+      </div>
+
+      <div class="boat-card">
+        <span class="py-badge">PY 1100</span>
+        <span class="boat-flag">⚡</span>
+        <div class="boat-class">420</div>
+        <div class="boat-name">"Hijo del Rayo" — Clase 420</div>
+        <ul class="boat-specs">
+          <li><span class="label">Eslora</span><span class="value">4.20 m</span></li>
+          <li><span class="label">Tripulación</span><span class="value">2</span></li>
+          <li><span class="label">Clase</span><span class="value">420</span></li>
+          <li><span class="label">PY RYA 2024</span><span class="value">1100</span></li>
         </ul>
       </div>
 
@@ -780,7 +269,6 @@
 
 <hr class="rope-line">
 
-<!-- CLUB -->
 <section id="club">
   <div class="section-inner">
     <div class="section-header">
@@ -789,25 +277,16 @@
       <div class="divider"></div>
       <p class="section-lead">CNCE — Comodoro Rivadavia, desde el Golfo San Jorge.</p>
     </div>
-
     <div class="club-layout">
       <div class="club-text">
         <h3>El club es casa</h3>
-        <p>
-          El Club Náutico Comodoro Rivadavia es el centro de la vida náutica patagónica. 
-          Vientos del sur, agua fría del Golfo San Jorge y una comunidad que lleva la vela 
-          en la sangre. No es para cualquiera — y eso lo hace especial.
-        </p>
-        <p>
-          Navegar en Patagonia es otra cosa. Acá el viento no avisa, las olas tienen carácter 
-          propio y cada regata es un desafío real. La meteorología no es opcional.
-        </p>
-
+        <p>El Club Náutico Comodoro Rivadavia es el centro de la vida náutica patagónica. Vientos del sur, agua fría del Golfo San Jorge y una comunidad que lleva la vela en la sangre. No es para cualquiera — y eso lo hace especial.</p>
+        <p>Navegar en Patagonia es otra cosa. Acá el viento no avisa, las olas tienen carácter propio y cada regata es un desafío real. La meteorología no es opcional.</p>
         <div class="club-roles">
           <div class="club-role-item">
             <span class="icon">⛵</span>
             <span class="role-label">Regatista</span>
-            <span>Flota activa, clases ILCA / 470 / Europe</span>
+            <span>Flota activa, clases ILCA / 420 / Europe / Pampero</span>
           </div>
           <div class="club-role-item">
             <span class="icon">📡</span>
@@ -821,32 +300,13 @@
           </div>
         </div>
       </div>
-
       <div class="club-info-box">
-        <div class="info-row">
-          <span class="info-label">Club</span>
-          <span class="info-value">Club Náutico Comodoro Rivadavia</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Sigla</span>
-          <span class="info-value">CNCE</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Ubicación</span>
-          <span class="info-value">Comodoro Rivadavia, Chubut</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Zona de navegación</span>
-          <span class="info-value">Golfo San Jorge · Patagonia</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Viento predominante</span>
-          <span class="info-value">SW · fuerte · sin preaviso 💨</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Clases activas</span>
-          <span class="info-value">ILCA 7 · ILCA 6 · 470 · Europe</span>
-        </div>
+        <div class="info-row"><span class="info-label">Club</span><span class="info-value">Club Náutico Comodoro Rivadavia</span></div>
+        <div class="info-row"><span class="info-label">Sigla</span><span class="info-value">CNCE</span></div>
+        <div class="info-row"><span class="info-label">Ubicación</span><span class="info-value">Comodoro Rivadavia, Chubut</span></div>
+        <div class="info-row"><span class="info-label">Zona de navegación</span><span class="info-value">Golfo San Jorge · Patagonia</span></div>
+        <div class="info-row"><span class="info-label">Viento predominante</span><span class="info-value">SW · fuerte · sin preaviso 💨</span></div>
+        <div class="info-row"><span class="info-label">Clases activas</span><span class="info-value">ILCA 7 · ILCA 6 · 420 · Europe · Pampero</span></div>
       </div>
     </div>
   </div>
@@ -854,7 +314,6 @@
 
 <hr class="rope-line">
 
-<!-- REGATAS -->
 <section id="regatas">
   <div class="section-inner">
     <div class="section-header">
@@ -867,13 +326,7 @@
     <div class="regatas-table-wrap">
       <table>
         <thead>
-          <tr>
-            <th>Año</th>
-            <th>Regata</th>
-            <th>Clase</th>
-            <th>Puesto</th>
-            <th>Observaciones</th>
-          </tr>
+          <tr><th>Año</th><th>Regata</th><th>Clase</th><th>Puesto</th><th>Observaciones</th></tr>
         </thead>
         <tbody>
           <tr>
@@ -885,19 +338,78 @@
           </tr>
           <tr>
             <td>—</td>
-            <td colspan="4" class="placeholder-note">
-              Próximamente — completar con historial real 📋
-            </td>
+            <td colspan="4" class="placeholder-note">Próximamente — completar con historial real 📋</td>
           </tr>
         </tbody>
       </table>
     </div>
+
+    <p class="py-section-title">Números de <em>Portsmouth Yardstick</em> — referencia CNCE</p>
+    <div class="regatas-table-wrap">
+      <table>
+        <thead>
+          <tr><th>Clase</th><th>Nombre ILCA / internacional</th><th>Tripulación</th><th>PY RYA 2024</th><th>Velocidad relativa</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>470</strong></td>
+            <td>Clase 470</td>
+            <td>2 + spinnaker</td>
+            <td><strong>973</strong></td>
+            <td><span class="dot-fast">★★★★★</span></td>
+          </tr>
+          <tr>
+            <td><strong>Laser Standard</strong></td>
+            <td>ILCA 7</td>
+            <td>1</td>
+            <td><strong>1102</strong></td>
+            <td><span class="dot-fast">★★★★☆</span></td>
+          </tr>
+          <tr>
+            <td><strong>420</strong></td>
+            <td>Clase 420</td>
+            <td>2</td>
+            <td><strong>1100</strong></td>
+            <td><span class="dot-fast">★★★★☆</span></td>
+          </tr>
+          <tr>
+            <td><strong>Europe</strong></td>
+            <td>Clase Europe</td>
+            <td>1</td>
+            <td><strong>1147</strong></td>
+            <td><span class="dot-fast">★★★☆☆</span></td>
+          </tr>
+          <tr>
+            <td><strong>Laser Radial</strong></td>
+            <td>ILCA 6</td>
+            <td>1</td>
+            <td><strong>1154</strong></td>
+            <td><span class="dot-fast">★★★☆☆</span></td>
+          </tr>
+          <tr>
+            <td><strong>Laser 4.7</strong></td>
+            <td>ILCA 4</td>
+            <td>1</td>
+            <td><strong>1213</strong></td>
+            <td><span class="dot-slow">★★☆☆☆</span></td>
+          </tr>
+          <tr>
+            <td><strong>Pampero</strong></td>
+            <td>Clase Nacional Argentina</td>
+            <td>1</td>
+            <td><strong>—</strong></td>
+            <td><span style="color:#999;font-style:italic">clase local s/n RYA</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="py-note">* Fuente: RYA Portsmouth Yardstick 2024. Número más bajo = barco más rápido. El Pampero es clase nacional argentina sin número RYA oficial asignado.</p>
+
   </div>
 </section>
 
 <hr class="rope-line">
 
-<!-- GALERÍA -->
 <section id="galeria">
   <div class="section-inner">
     <div class="section-header">
@@ -906,37 +418,17 @@
       <div class="divider"></div>
       <p class="section-lead">El agua, el viento y los barcos. Imágenes próximamente.</p>
     </div>
-
     <div class="gallery-grid">
-      <div class="gallery-item featured">
-        <span class="gallery-icon">🌊</span>
-        <span>Foto destacada</span>
-      </div>
-      <div class="gallery-item">
-        <span class="gallery-icon">⛵</span>
-        <span>En regata</span>
-      </div>
-      <div class="gallery-item">
-        <span class="gallery-icon">🏅</span>
-        <span>Podio</span>
-      </div>
-      <div class="gallery-item">
-        <span class="gallery-icon">⚓</span>
-        <span>El club</span>
-      </div>
-      <div class="gallery-item">
-        <span class="gallery-icon">💨</span>
-        <span>Viento Sur</span>
-      </div>
-      <div class="gallery-item">
-        <span class="gallery-icon">🌅</span>
-        <span>Amanecer náutico</span>
-      </div>
+      <div class="gallery-item featured"><span class="gallery-icon">🌊</span><span>Foto destacada</span></div>
+      <div class="gallery-item"><span class="gallery-icon">⛵</span><span>En regata</span></div>
+      <div class="gallery-item"><span class="gallery-icon">🏅</span><span>Podio</span></div>
+      <div class="gallery-item"><span class="gallery-icon">⚓</span><span>El club</span></div>
+      <div class="gallery-item"><span class="gallery-icon">💨</span><span>Viento Sur</span></div>
+      <div class="gallery-item"><span class="gallery-icon">🌅</span><span>Amanecer náutico</span></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-brand">Sailing Patagonia</div>
   <div class="footer-callsign">LU2WBA · Francisco Rodríguez · Comodoro Rivadavia</div>
