@@ -109,11 +109,33 @@
     overflow: hidden;
   }
 
-  /* Animated ocean waves background */
+  /* Photo background */
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    background-image: url('fragata1.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    background-repeat: no-repeat;
+  }
+
+  /* Dark navy overlay */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10,22,40,0.55) 0%,
+      rgba(10,22,40,0.45) 50%,
+      rgba(10,22,40,0.75) 100%
+    );
+  }
+
+  /* Subtle wave animation on top of photo */
   .hero-waves {
     position: absolute;
     inset: 0;
-    opacity: 0.18;
+    opacity: 0.06;
     background:
       repeating-linear-gradient(
         -8deg,
@@ -637,6 +659,8 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-overlay"></div>
   <div class="hero-waves"></div>
 
   <!-- Compass Rose SVG -->
