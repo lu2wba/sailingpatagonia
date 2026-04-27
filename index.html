@@ -25,7 +25,6 @@
 
   .rope-line { border: none; height: 6px; background: repeating-linear-gradient(90deg, var(--rope) 0px, var(--rope) 8px, var(--gold) 8px, var(--gold) 12px, var(--rope) 12px, var(--rope) 20px); opacity: 0.6; }
 
-  /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--navy); border-bottom: 3px solid var(--gold); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 62px; }
   .nav-brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: var(--white); letter-spacing: 0.12em; text-decoration: none; }
   .nav-brand span { color: var(--gold); }
@@ -34,41 +33,11 @@
   .nav-links a:hover { color: var(--gold-light); border-color: var(--gold-light); }
 
   /* HERO */
-  .hero {
-    height: 100vh;
-    min-height: 600px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: #0a1628;
-  }
-
-  /*
-    background-size: 65% auto  →  foto al 65% del ancho, altura proporcional
-    background-position: center center  →  centrada horizontal y vertical
-    Resultado: foto más chica, se ve completa con el Laser y la Fragata
-  */
-  .hero-photo {
-    position: absolute;
-    inset: 0;
-    background-image: url('fragata1.jpg');
-    background-size: 65% auto;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-
-  /* Overlay suave para legibilidad del texto */
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(10, 22, 40, 0.30);
-  }
-
+  .hero { height: 100vh; min-height: 600px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #0a1628; }
+  .hero-photo { position: absolute; inset: 0; background-image: url('fragata1.jpg'); background-size: 65% auto; background-position: center center; background-repeat: no-repeat; }
+  .hero-overlay { position: absolute; inset: 0; background: rgba(10,22,40,0.30); }
   .compass-rose { position: absolute; right: 8%; top: 45%; transform: translateY(-50%); width: 300px; height: 300px; opacity: 0.15; animation: spin-slow 60s linear infinite; z-index: 1; }
   @keyframes spin-slow { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(360deg); } }
-
   .hero-content { position: relative; z-index: 2; text-align: center; padding: 2rem; animation: fadeUp 1s ease both; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   .hero-eyebrow { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.3em; font-size: 0.85rem; color: var(--gold); margin-bottom: 1rem; text-transform: uppercase; }
@@ -80,7 +49,6 @@
   .scroll-hint::after { content: ''; display: block; width: 1px; height: 40px; background: var(--foam); margin: 8px auto 0; }
   @keyframes bob { 0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); } 50% { opacity: 0.7; transform: translateX(-50%) translateY(6px); } }
 
-  /* SECTIONS */
   section { padding: 90px 0; }
   .section-inner { max-width: 1060px; margin: 0 auto; padding: 0 2.5rem; }
   .section-header { text-align: center; margin-bottom: 3.5rem; }
@@ -141,11 +109,66 @@
 
   /* GALERÍA */
   #galeria { background: var(--white); }
-  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-  .gallery-item { background: #eaf3fb; border: 1px solid #b8d4e8; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; color: #5a6a7e; font-size: 0.82rem; font-style: italic; overflow: hidden; transition: transform 0.2s; cursor: pointer; }
-  .gallery-item:hover { transform: scale(1.02); }
-  .gallery-item.featured { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; min-height: 300px; }
-  .gallery-icon { font-size: 2.5rem; opacity: 0.35; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    background: var(--navy);
+    cursor: pointer;
+    border-radius: 2px;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 4/3;
+    transition: transform 0.4s ease, opacity 0.3s;
+    opacity: 0.92;
+  }
+
+  .gallery-item:hover img { transform: scale(1.04); opacity: 1; }
+
+  .gallery-item.featured {
+    grid-column: span 2;
+  }
+
+  .gallery-item.tall {
+    grid-row: span 2;
+  }
+
+  .gallery-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(10,22,40,0.85));
+    color: var(--foam);
+    padding: 2rem 1rem 0.8rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 0.82rem;
+    font-style: italic;
+    line-height: 1.4;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .gallery-item:hover .gallery-caption { opacity: 1; }
+
+  .gallery-caption strong {
+    display: block;
+    font-style: normal;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 0.78rem;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+  }
 
   /* FOOTER */
   footer { background: var(--navy); color: var(--foam); text-align: center; padding: 3rem 2rem; border-top: 3px solid var(--gold); }
@@ -160,12 +183,15 @@
     .club-layout { grid-template-columns: 1fr; gap: 2rem; }
     nav { padding: 0 1rem; }
     .nav-links { gap: 1rem; }
-    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-item.featured { grid-column: span 2; }
+    .gallery-item.tall { grid-row: span 1; }
     .boats-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 560px) {
     .gallery-grid { grid-template-columns: 1fr; }
-    .boats-grid   { grid-template-columns: 1fr; }
+    .gallery-item.featured { grid-column: span 1; }
+    .boats-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -184,7 +210,6 @@
 <section class="hero">
   <div class="hero-photo"></div>
   <div class="hero-overlay"></div>
-
   <svg class="compass-rose" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="100" cy="100" r="90" stroke="white" stroke-width="1.5"/>
     <circle cx="100" cy="100" r="70" stroke="white" stroke-width="0.8"/>
@@ -202,7 +227,6 @@
     <text x="2"   y="104" fill="white" font-size="12" font-family="serif" opacity="0.6">O</text>
     <text x="188" y="104" fill="white" font-size="12" font-family="serif">E</text>
   </svg>
-
   <div class="hero-content">
     <p class="hero-eyebrow">⛵ &nbsp; Comodoro Rivadavia · Patagonia · Argentina</p>
     <h1>Sailing<br><em>Patagonia</em></h1>
@@ -416,15 +440,83 @@
       <span class="section-tag">📷 Imágenes</span>
       <h2><em>Galería</em></h2>
       <div class="divider"></div>
-      <p class="section-lead">El agua, el viento y los barcos. Imágenes próximamente.</p>
+      <p class="section-lead">Tres décadas navegando el Golfo San Jorge y más allá.</p>
     </div>
+
     <div class="gallery-grid">
-      <div class="gallery-item featured"><span class="gallery-icon">🌊</span><span>Foto destacada</span></div>
-      <div class="gallery-item"><span class="gallery-icon">⛵</span><span>En regata</span></div>
-      <div class="gallery-item"><span class="gallery-icon">🏅</span><span>Podio</span></div>
-      <div class="gallery-item"><span class="gallery-icon">⚓</span><span>El club</span></div>
-      <div class="gallery-item"><span class="gallery-icon">💨</span><span>Viento Sur</span></div>
-      <div class="gallery-item"><span class="gallery-icon">🌅</span><span>Amanecer náutico</span></div>
+
+      <!-- Foto grande: Laser en acción -->
+      <div class="gallery-item featured">
+        <img src="laser1.jpg" alt="Francisco Rodríguez en el Laser Radial">
+        <div class="gallery-caption">
+          <strong>La Pinta — Laser Radial</strong>
+          Francisco Rodríguez navegando en el Golfo San Jorge
+        </div>
+      </div>
+
+      <!-- Celesia — panorámica calma -->
+      <div class="gallery-item">
+        <img src="celesia.jpg" alt="Panorámica del Golfo San Jorge">
+        <div class="gallery-caption">
+          <strong>Golfo San Jorge — calma chicha</strong>
+          La flota del CNCE en un día sin viento
+        </div>
+      </div>
+
+      <!-- Europa 1 -->
+      <div class="gallery-item">
+        <img src="europa1.jpg" alt="Europe ARG-94">
+        <div class="gallery-caption">
+          <strong>Totatola — Clase Europe ARG-94</strong>
+          Navegando en el Golfo San Jorge
+        </div>
+      </div>
+
+      <!-- Europa 2 -->
+      <div class="gallery-item">
+        <img src="europa2.jpg" alt="Europe navegando">
+        <div class="gallery-caption">
+          <strong>Europe — Golfo San Jorge</strong>
+          Cielo patagónico, viento del oeste
+        </div>
+      </div>
+
+      <!-- Minga — Fortinera a bordo -->
+      <div class="gallery-item">
+        <img src="minga1.jpg" alt="A bordo del Minga 1">
+        <div class="gallery-caption">
+          <strong>Paseo en el Minga 1</strong>
+          A bordo del crucero de Claudito
+        </div>
+      </div>
+
+      <!-- Pampero -->
+      <div class="gallery-item">
+        <img src="pampero1.jpg" alt="Paseando en Pampero con Beni">
+        <div class="gallery-caption">
+          <strong>Pampero con Beni — 2005/2006</strong>
+          Navegación costera, Golfo San Jorge
+        </div>
+      </div>
+
+      <!-- Caribe / Cancún -->
+      <div class="gallery-item">
+        <img src="caribe1.jpg" alt="Timoneando el Hobby en Cancún">
+        <div class="gallery-caption">
+          <strong>Hobby cat — Cancún, Caribe · 2011</strong>
+          Timoneando en el Riu, aguas del Caribe
+        </div>
+      </div>
+
+      <!-- Celesia histórica — grupo con Andarin II -->
+      <div class="gallery-item featured">
+        <img src="celesia.jpg" alt="Partida al Cabo de Hornos 1994">
+        <div class="gallery-caption">
+          <strong>C. Náutico YPF · 1994 — Antes del Cabo de Hornos</strong>
+          Francisco H. Rodríguez · Pedro Sánchez · Enrique Celesia · Marcos Luna. Con el Andarín II de fondo, antes de partir a virar el Cabo de Hornos.
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
