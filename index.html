@@ -32,7 +32,6 @@
   .nav-links a { font-family: 'EB Garamond', serif; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--foam); text-decoration: none; padding-bottom: 2px; border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s; }
   .nav-links a:hover { color: var(--gold-light); border-color: var(--gold-light); }
 
-  /* HERO */
   .hero { height: 100vh; min-height: 600px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #0a1628; }
   .hero-photo { position: absolute; inset: 0; background-image: url('fragata1.jpg'); background-size: 65% auto; background-position: center center; background-repeat: no-repeat; }
   .hero-overlay { position: absolute; inset: 0; background: rgba(10,22,40,0.30); }
@@ -58,7 +57,6 @@
   .section-lead { font-style: italic; color: #3a4a5e; max-width: 560px; margin: 1rem auto 0; font-size: 1.05rem; }
   .divider { width: 60px; height: 3px; background: var(--gold); margin: 1.2rem auto 0; }
 
-  /* BARCOS */
   #barcos { background: var(--white); }
   .boats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
   .boat-card { background: #eaf3fb; border: 1px solid #b8d4e8; border-top: 4px solid var(--ocean); padding: 1.8rem 1.6rem; position: relative; transition: transform 0.25s, box-shadow 0.25s; }
@@ -72,7 +70,6 @@
   .boat-specs .value { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; color: var(--navy); font-size: 0.95rem; }
   .py-badge { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--navy); color: var(--gold); font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.1em; font-size: 0.85rem; padding: 0.2rem 0.6rem; }
 
-  /* CLUB */
   #club { background: var(--navy); color: var(--foam); }
   #club .section-header h2 { color: var(--white); }
   #club .section-lead { color: var(--foam); opacity: 0.8; }
@@ -86,7 +83,6 @@
   .info-label { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.15em; font-size: 0.72rem; color: var(--gold); margin-bottom: 0.2rem; }
   .info-value { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--white); }
 
-  /* REGATAS */
   #regatas { background: var(--cream); }
   .regatas-table-wrap { overflow-x: auto; border: 1px solid #b8d4e8; margin-bottom: 2.5rem; }
   table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
@@ -107,7 +103,6 @@
   .dot-fast { color: #1a4b8c; }
   .dot-slow { color: #8b6f47; }
 
-  /* GALERÍA */
   #galeria { background: var(--white); }
   .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
   .gallery-item { position: relative; overflow: hidden; background: var(--navy); cursor: pointer; border-radius: 2px; }
@@ -118,7 +113,6 @@
   .gallery-item:hover .gallery-caption { opacity: 1; }
   .gallery-caption strong { display: block; font-style: normal; font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.1em; font-size: 0.78rem; color: var(--gold); margin-bottom: 0.2rem; }
 
-  /* FOOTER */
   footer { background: var(--navy); color: var(--foam); text-align: center; padding: 3rem 2rem; border-top: 3px solid var(--gold); }
   .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; color: var(--white); margin-bottom: 0.5rem; }
   .footer-callsign { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.25em; color: var(--gold); font-size: 0.9rem; margin-bottom: 1.5rem; }
@@ -391,6 +385,7 @@
     </div>
     <div class="gallery-grid">
 
+      <!-- 1. Laser1 — destacada -->
       <div class="gallery-item featured">
         <img src="laser1.jpg" alt="Francisco Rodríguez en el Laser Radial">
         <div class="gallery-caption">
@@ -399,8 +394,7 @@
         </div>
       </div>
 
-
-
+      <!-- 2. Europa1 — Europe ARG-94 -->
       <div class="gallery-item">
         <img src="europa1.jpg" alt="Europe ARG-94 navegando">
         <div class="gallery-caption">
@@ -409,8 +403,16 @@
         </div>
       </div>
 
+      <!-- 3. Europa2 — flota en el golfo -->
+      <div class="gallery-item">
+        <img src="europa2.jpg" alt="Flota navegando en el Golfo San Jorge">
+        <div class="gallery-caption">
+          <strong>Golfo San Jorge — flota navegando</strong>
+          Día de regata en el CNCE
+        </div>
+      </div>
 
-
+      <!-- 4. Minga1 -->
       <div class="gallery-item">
         <img src="minga1.jpg" alt="A bordo del Minga 1">
         <div class="gallery-caption">
@@ -419,6 +421,7 @@
         </div>
       </div>
 
+      <!-- 5. Pampero1 -->
       <div class="gallery-item">
         <img src="pampero1.jpg" alt="Paseando en Pampero con Beni">
         <div class="gallery-caption">
@@ -427,6 +430,7 @@
         </div>
       </div>
 
+      <!-- 6. Caribe1 — Cancún -->
       <div class="gallery-item">
         <img src="caribe1.jpg" alt="Timoneando el Hobby en Cancún">
         <div class="gallery-caption">
@@ -435,6 +439,7 @@
         </div>
       </div>
 
+      <!-- 7. Fragata Libertad — destacada -->
       <div class="gallery-item featured">
         <img src="fragata1.jpg" alt="Navegando formado a la Fragata Libertad">
         <div class="gallery-caption">
