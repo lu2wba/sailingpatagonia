@@ -32,7 +32,6 @@
   .nav-links a { font-family: 'EB Garamond', serif; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--foam); text-decoration: none; padding-bottom: 2px; border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s; }
   .nav-links a:hover { color: var(--gold-light); border-color: var(--gold-light); }
 
-  /* HERO */
   .hero { height: 100vh; min-height: 600px; background: var(--navy); position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .hero-photo { position: absolute; inset: 0; background-image: url('fragata1.jpg'); background-size: contain; background-position: center center; background-repeat: no-repeat; }
   .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,22,40,0.50) 0%, rgba(10,22,40,0.40) 45%, rgba(10,22,40,0.65) 72%, #b8d8f0 88%, #ddeef8 100%); }
@@ -51,7 +50,6 @@
   .scroll-hint::after { content: ''; display: block; width: 1px; height: 40px; background: var(--foam); margin: 8px auto 0; }
   @keyframes bob { 0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); } 50% { opacity: 0.7; transform: translateX(-50%) translateY(6px); } }
 
-  /* SECTIONS */
   section { padding: 90px 0; }
   .section-inner { max-width: 1060px; margin: 0 auto; padding: 0 2.5rem; }
   .section-header { text-align: center; margin-bottom: 3.5rem; }
@@ -61,7 +59,6 @@
   .section-lead { font-style: italic; color: #3a4a5e; max-width: 560px; margin: 1rem auto 0; font-size: 1.05rem; }
   .divider { width: 60px; height: 3px; background: var(--gold); margin: 1.2rem auto 0; }
 
-  /* BARCOS */
   #barcos { background: var(--white); }
   .boats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; }
   .boat-card { background: #eaf3fb; border: 1px solid #b8d4e8; border-top: 4px solid var(--ocean); padding: 1.8rem 1.6rem; position: relative; transition: transform 0.25s, box-shadow 0.25s; }
@@ -75,7 +72,6 @@
   .boat-specs .value { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.05em; color: var(--navy); font-size: 0.95rem; }
   .py-badge { position: absolute; top: 1.2rem; right: 1.2rem; background: var(--navy); color: var(--gold); font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.1em; font-size: 0.85rem; padding: 0.2rem 0.6rem; }
 
-  /* CLUB */
   #club { background: var(--navy); color: var(--foam); }
   #club .section-header h2 { color: var(--white); }
   #club .section-lead { color: var(--foam); opacity: 0.8; }
@@ -89,7 +85,6 @@
   .info-label { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.15em; font-size: 0.72rem; color: var(--gold); margin-bottom: 0.2rem; }
   .info-value { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--white); }
 
-  /* REGATAS */
   #regatas { background: var(--cream); }
   .regatas-table-wrap { overflow-x: auto; border: 1px solid #b8d4e8; margin-bottom: 2.5rem; }
   table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
@@ -110,7 +105,6 @@
   .dot-fast { color: #1a4b8c; }
   .dot-slow { color: #8b6f47; }
 
-  /* GALERÍA */
   #galeria { background: var(--white); }
   .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
   .gallery-item { background: #eaf3fb; border: 1px solid #b8d4e8; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; color: #5a6a7e; font-size: 0.82rem; font-style: italic; overflow: hidden; transition: transform 0.2s; cursor: pointer; }
@@ -118,7 +112,6 @@
   .gallery-item.featured { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; min-height: 300px; }
   .gallery-icon { font-size: 2.5rem; opacity: 0.35; }
 
-  /* FOOTER */
   footer { background: var(--navy); color: var(--foam); text-align: center; padding: 3rem 2rem; border-top: 3px solid var(--gold); }
   .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; color: var(--white); margin-bottom: 0.5rem; }
   .footer-callsign { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.25em; color: var(--gold); font-size: 0.9rem; margin-bottom: 1.5rem; }
@@ -191,6 +184,8 @@
       <p class="section-lead">Cada clase tiene su carácter. Cada salida, su historia.</p>
     </div>
     <div class="boats-grid">
+
+      <!-- LASER RADIAL -->
       <div class="boat-card">
         <span class="py-badge">PY 1154</span>
         <span class="boat-flag">💨</span>
@@ -203,6 +198,8 @@
           <li><span class="label">PY RYA 2024</span><span class="value">1154</span></li>
         </ul>
       </div>
+
+      <!-- LASER STANDARD -->
       <div class="boat-card">
         <span class="py-badge">PY 1102</span>
         <span class="boat-flag">🌊</span>
@@ -215,6 +212,8 @@
           <li><span class="label">PY RYA 2024</span><span class="value">1102</span></li>
         </ul>
       </div>
+
+      <!-- CRUCERO FORTINERA -->
       <div class="boat-card">
         <span class="py-badge">Crucero</span>
         <span class="boat-flag">⛵</span>
@@ -222,11 +221,13 @@
         <div class="boat-name">"Fortinera"</div>
         <ul class="boat-specs">
           <li><span class="label">Tipo</span><span class="value">Crucero liviano</span></li>
-          <li><span class="label">Navegación</span><span class="value">Costera</span></li>
-          <li><span class="label">Uso</span><span class="value">Excursión y recreación</span></li>
-          <li><span class="label">Capitán</span><span class="value">Andriu Rodríguez</span></li>
+          <li><span class="label">Eslora</span><span class="value">&nbsp;</span></li>
+          <li><span class="label">Manga</span><span class="value">&nbsp;</span></li>
+          <li><span class="label">Capitán</span><span class="value">Andy Rodríguez</span></li>
         </ul>
       </div>
+
+      <!-- EUROPE -->
       <div class="boat-card">
         <span class="py-badge">PY 1147</span>
         <span class="boat-flag">🏅</span>
@@ -239,13 +240,31 @@
           <li><span class="label">PY RYA 2024</span><span class="value">1147</span></li>
         </ul>
       </div>
+
+      <!-- 420 con logo SVG clase -->
       <div class="boat-card">
         <span class="py-badge">PY 1100</span>
-        <span class="boat-flag">
-          <svg width="58" height="46" viewBox="0 0 58 46" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;margin-bottom:0.4rem">
-            <text x="0"  y="36" font-family="Georgia,serif" font-size="38" font-weight="900" fill="#0a1628" transform="rotate(-10,0,36)">4</text>
-            <text x="19" y="40" font-family="Georgia,serif" font-size="30" font-weight="900" fill="#1a4b8c" transform="rotate(-10,19,40)">2</text>
-            <text x="34" y="34" font-family="Georgia,serif" font-size="32" font-weight="900" fill="#0a1628" opacity="0.8" transform="rotate(-10,34,34)">0</text>
+        <!-- Logo 420: 4 grande arriba izquierda, 2 abajo centro, 0 arriba derecha — italic bold azul -->
+        <span class="boat-flag" style="display:block;margin-bottom:0.6rem;">
+          <svg width="62" height="52" viewBox="0 0 62 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- "4" grande, italic, arriba izquierda -->
+            <text x="1" y="38"
+              font-family="Georgia, 'Times New Roman', serif"
+              font-size="42" font-weight="900"
+              font-style="italic"
+              fill="#2060a0">4</text>
+            <!-- "2" mediano, italic, abajo centro-derecha -->
+            <text x="24" y="50"
+              font-family="Georgia, 'Times New Roman', serif"
+              font-size="32" font-weight="900"
+              font-style="italic"
+              fill="#2060a0">2</text>
+            <!-- "0" mediano, italic, arriba derecha — se superpone -->
+            <text x="38" y="36"
+              font-family="Georgia, 'Times New Roman', serif"
+              font-size="32" font-weight="900"
+              font-style="italic"
+              fill="#2060a0">0</text>
           </svg>
         </span>
         <div class="boat-class">420</div>
@@ -257,6 +276,7 @@
           <li><span class="label">PY RYA 2024</span><span class="value">1100</span></li>
         </ul>
       </div>
+
     </div>
   </div>
 </section>
