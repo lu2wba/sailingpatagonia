@@ -45,25 +45,26 @@
     background: #0a1628;
   }
 
-  /* Foto cubre todo el hero, enfocada en el centro-abajo donde está el Laser */
+  /*
+    background-size: 65% auto  →  foto al 65% del ancho, altura proporcional
+    background-position: center center  →  centrada horizontal y vertical
+    Resultado: foto más chica, se ve completa con el Laser y la Fragata
+  */
   .hero-photo {
     position: absolute;
     inset: 0;
     background-image: url('fragata1.jpg');
-    background-size: cover;
-    background-position: center bottom;
+    background-size: 65% auto;
+    background-position: center center;
     background-repeat: no-repeat;
   }
 
-  /* Overlay mínimo solo para legibilidad del texto */
+  /* Overlay suave para legibilidad del texto */
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(10, 22, 40, 0.25);
+    background: rgba(10, 22, 40, 0.30);
   }
-
-  /* Sin fade — la sección siguiente arranca con su propio fondo */
-  .hero-fade-bottom { display: none; }
 
   .compass-rose { position: absolute; right: 8%; top: 45%; transform: translateY(-50%); width: 300px; height: 300px; opacity: 0.15; animation: spin-slow 60s linear infinite; z-index: 1; }
   @keyframes spin-slow { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(360deg); } }
@@ -183,7 +184,6 @@
 <section class="hero">
   <div class="hero-photo"></div>
   <div class="hero-overlay"></div>
-  <div class="hero-fade-bottom"></div>
 
   <svg class="compass-rose" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="100" cy="100" r="90" stroke="white" stroke-width="1.5"/>
