@@ -45,31 +45,25 @@
     background: #0a1628;
   }
 
-  /* Foto: ancho 100%, altura proporcional, anclada arriba */
+  /* Foto cubre todo el hero, enfocada en el centro-abajo donde está el Laser */
   .hero-photo {
     position: absolute;
     inset: 0;
     background-image: url('fragata1.jpg');
-    background-size: 100% auto;
-    background-position: left top;
+    background-size: cover;
+    background-position: center bottom;
     background-repeat: no-repeat;
   }
 
-  /* Overlay suave solo para legibilidad del texto */
+  /* Overlay mínimo solo para legibilidad del texto */
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(10, 22, 40, 0.28);
+    background: rgba(10, 22, 40, 0.25);
   }
 
-  /* Fade SOLO en el último 10% — transición al color del body */
-  .hero-fade-bottom {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 10%;
-    background: linear-gradient(to bottom, transparent 0%, #ddeef8 100%);
-    z-index: 1;
-  }
+  /* Sin fade — la sección siguiente arranca con su propio fondo */
+  .hero-fade-bottom { display: none; }
 
   .compass-rose { position: absolute; right: 8%; top: 45%; transform: translateY(-50%); width: 300px; height: 300px; opacity: 0.15; animation: spin-slow 60s linear infinite; z-index: 1; }
   @keyframes spin-slow { from { transform: translateY(-50%) rotate(0deg); } to { transform: translateY(-50%) rotate(360deg); } }
